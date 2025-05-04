@@ -32,13 +32,13 @@ function App() {
   //   return errors
   // }
   let registerFormSchema = object().shape({
-    name:string().required().min(3),
-    username : string().required().min(6),
-    email:string().required().email(),
-    password:string().required().min(8),
-    about:string().required(),
-    gender:string().required().matches(/(male|female)/),
-    rules:boolean().required()
+    name:string().required('وارد کردن فیلد نام الزامی است').min(3,'حداقل طول نام 3 کاراکتر است'),
+    username : string().required('وارد کردن فیلد نام کاربری الزامی است').min(6,'حداقل طول نام کاربری 6 کاراکتر است'),
+    email:string().required('وارد کردن فیلد ایمیل الزامی است').email(),
+    password:string().required('وارد کردن فیلد پسورد الزامی است').min(8,'حداقل طول رمز عبور 8 کاراکتر است'),
+    about:string().required('وارد کردن فیلد درباره ما الزامی است'),
+    gender:string().required('لطفا جنسیت خود را انتخاب کنید').matches(/(male|female)/),
+    rules:boolean().required('پذیرفتن قوانین الزامی است')
   })
 
   const submitHandler= (values)=>{
